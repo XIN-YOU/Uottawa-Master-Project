@@ -1,9 +1,8 @@
-# When you run this on the cluster (as an array job), the jobindex will 
-# be set based on the array index in your job submission script 
+# When run this on the cluster (as an array job), the jobindex will 
+# be set based on the array index in job submission script 
 jobindex=1000
 
-# You only need to load an R library once. Best to do it at the 
-# beginning of the script
+# load an R library 
 library(trio)
 library(sim1000G)
 
@@ -15,12 +14,10 @@ vcfdir="/Users/Shelly/Documents/Fall_Project/subset chr vcf/"
 # Simulation settings (p0 is get from another r script)
 numtrios=10
 p0=0.35
-numsim=2
+numsim=1000
 
 
-# Chromosomes with variant data 
-# We don't need to test which chromosomes have data every time, 
-# as this won't change across the simulations. 
+# Chromosomes with variant data  
 chroms=c(1,2,3,5,6,8,9,11,12,14,15,17,18,21)
 
 # Store results in a matrix and write out at the end
@@ -72,14 +69,5 @@ for(k in 1:numsim){
 
 write.table(resmat, paste("GXE","-",jobindex,".txt",sep=""),quote=F,row=F,col.names = T,append = F)
 write.table(newmat, paste("MainGene","-",jobindex,".txt",sep=""),quote=F,row=F,col.names = T,append = F)
-## When we have 1000's of simulations, we can't manually extract
-## the information from the capture.output command. So, for each simulation
-## keep only the relevant information. In our case, it's the p-value. I've 
-## modified the above to keep only the minimum p-value from a simulation
-
-#out=capture.output(print(gxe.add,1,onlyGxE= T))
-#print(gxe.add,1,onlyGxE= T)
-#setwd("/Users/Shelly/Documents/Project_R_code/1000/min.p.value/")
-#write.table(out,paste("test",k,"_","min-p",".txt",sep=""),append = T,quote = F,
-#            col=F,row= F)
+# for each simulation, keep only the relevant information. In our case, it's the minimum p-value from a simulation
 
