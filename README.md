@@ -1,4 +1,4 @@
-An Algorithm for Simulating Data for the Investigation of Maternal-Gene-Environment and Pathway Effects
+##An Algorithm for Simulating Data for the Investigation of Maternal-Gene-Environment and Pathway Effects
 
 author: Xin You
 Project submitted in partial fulﬁllment of the requirements for the degree of Master of Science Mathematics and Statistics
